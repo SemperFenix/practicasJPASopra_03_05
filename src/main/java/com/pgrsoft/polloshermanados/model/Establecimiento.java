@@ -25,9 +25,8 @@ public class Establecimiento implements Serializable {
     private DatosContacto datosContacto;
     private Direccion direccion;
 
-    @Temporal(TemporalType.DATE)
     private LocalDate fechaInauguracion;
-    @Temporal(TemporalType.DATE)
+
     private LocalDate fechaCierre;
 
     private LocalTime horarioApertura;
