@@ -3,6 +3,7 @@ package com.pgrsoft.polloshermanados.model;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -97,10 +98,7 @@ public class Establecimiento implements Serializable {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-        return result;
+        return Objects.hash(codigo);
     }
 
     @Override
@@ -112,12 +110,7 @@ public class Establecimiento implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         Establecimiento other = (Establecimiento) obj;
-        if (codigo == null) {
-            if (other.codigo != null)
-                return false;
-        } else if (!codigo.equals(other.codigo))
-            return false;
-        return true;
+        return Objects.equals(codigo, other.codigo);
     }
 
     @Override
