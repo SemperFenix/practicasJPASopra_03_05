@@ -19,35 +19,38 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name="PEDIDOS")
-public class Pedido implements Serializable{
+@Table(name = "PEDIDOS")
+public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private Long codigo;
-	
-	@Column(name="FECHA_HORA")
+
+	@Column(name = "FECHA_HORA")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
-	
+
 	@ManyToOne
-	@JoinColumn(name="DNI_CAMARERO")
+	@JoinColumn(name = "DNI_CAMARERO")
 	private Camarero camarero;
-	
+
 	@ManyToOne
-	@JoinColumn(name="DNI_CLIENTE")
+	@JoinColumn(name = "DNI_CLIENTE")
 	private Cliente cliente;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "ESTABLECIMIENTO")
+	private Establecimiento establecimiento;
+
 	@Enumerated(EnumType.STRING)
 	private EstadoPedido estado;
-	
+
 	@ElementCollection
-	@JoinTable(name="LINEAS_PEDIDO",
-	           joinColumns = @JoinColumn(name = "CODIGO_PEDIDO"))
+	@JoinTable(name = "LINEAS_PEDIDO", joinColumns = @JoinColumn(name = "CODIGO_PEDIDO"))
 	private List<LineaPedido> lineas;
-	
+
 	public Pedido() {
-		
+
 	}
 
 	public Long getCodigo() {
@@ -73,7 +76,7 @@ public class Pedido implements Serializable{
 	public void setCamarero(Camarero camarero) {
 		this.camarero = camarero;
 	}
-	
+
 	public Cliente getCliente() {
 		return cliente;
 	}
