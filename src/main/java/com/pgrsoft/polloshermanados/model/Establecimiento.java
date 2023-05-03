@@ -1,14 +1,16 @@
 package com.pgrsoft.polloshermanados.model;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "ESTABLECIMIENTOS")
@@ -23,11 +25,15 @@ public class Establecimiento implements Serializable {
     private DatosContacto datosContacto;
     private Direccion direccion;
 
-    private Date fechaInauguracion;
-    private Date fechaCierre;
+    @Temporal(TemporalType.DATE)
+    private LocalDate fechaInauguracion;
+    @Temporal(TemporalType.DATE)
+    private LocalDate fechaCierre;
 
-    private Time horarioApertura;
-    private Time horarioCierre;
+    private LocalTime horarioApertura;
+
+    @Temporal(TemporalType.TIME)
+    private LocalTime horarioCierre;
 
     public Establecimiento() {
     }
@@ -64,35 +70,35 @@ public class Establecimiento implements Serializable {
         this.direccion = direccion;
     }
 
-    public Date getFechaInauguracion() {
+    public LocalDate getFechaInauguracion() {
         return fechaInauguracion;
     }
 
-    public void setFechaInauguracion(Date fechaInauguracion) {
+    public void setFechaInauguracion(LocalDate fechaInauguracion) {
         this.fechaInauguracion = fechaInauguracion;
     }
 
-    public Date getFechaCierre() {
+    public LocalDate getFechaCierre() {
         return fechaCierre;
     }
 
-    public void setFechaCierre(Date fechaCierre) {
+    public void setFechaCierre(LocalDate fechaCierre) {
         this.fechaCierre = fechaCierre;
     }
 
-    public Time getHorarioApertura() {
+    public LocalTime getHorarioApertura() {
         return horarioApertura;
     }
 
-    public void setHorarioApertura(Time horarioApertura) {
+    public void setHorarioApertura(LocalTime horarioApertura) {
         this.horarioApertura = horarioApertura;
     }
 
-    public Time getHorarioCierre() {
+    public LocalTime getHorarioCierre() {
         return horarioCierre;
     }
 
-    public void setHorarioCierre(Time horarioCierre) {
+    public void setHorarioCierre(LocalTime horarioCierre) {
         this.horarioCierre = horarioCierre;
     }
 
