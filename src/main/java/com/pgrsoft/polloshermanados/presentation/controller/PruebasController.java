@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pgrsoft.polloshermanados.integration.repositories.CamareroRepository;
 import com.pgrsoft.polloshermanados.integration.repositories.CategoriaRepository;
+import com.pgrsoft.polloshermanados.integration.repositories.ClienteRepository;
 import com.pgrsoft.polloshermanados.integration.repositories.PedidoRepository;
 import com.pgrsoft.polloshermanados.integration.repositories.ProductoRepository;
 import com.pgrsoft.polloshermanados.model.Camarero;
 import com.pgrsoft.polloshermanados.model.Categoria;
+import com.pgrsoft.polloshermanados.model.Cliente;
 import com.pgrsoft.polloshermanados.model.Pedido;
 import com.pgrsoft.polloshermanados.model.Producto;
 
-import jakarta.transaction.Transactional;
-
 @RestController
-public class ProductoController {
+public class PruebasController {
 
 	@Autowired
 	private ProductoRepository productoRepository;
@@ -31,6 +31,9 @@ public class ProductoController {
 	
 	@Autowired
 	private CamareroRepository camareroRepository;
+	
+	@Autowired
+	private ClienteRepository clienteRepository;
 	
 	@GetMapping("/productos")
 	public List<Producto> getAllProductos(){
@@ -47,21 +50,14 @@ public class ProductoController {
 		return pedidoRepository.findAll();
 	}
 	
-	@GetMapping("/crearcamarero")
-	@Transactional
-	public Camarero crearCamareroRandom() {
-		
-		String randomDNI = "_" + Math.floor(Math.random() * 100);
-		
-		Camarero camarero = new Camarero();
-		camarero.setDNI(randomDNI);
-		camarero.setNombre("nombre_" + randomDNI);
-		camarero.setApellido1("apellido1_" + randomDNI);
-		camarero.setApellido2("apellido2_" + randomDNI);
-		
-		camareroRepository.save(camarero);
-		
-		return camarero;
+	@GetMapping("/camareros")
+	public List<Camarero> getAllCamareros(){
+		return camareroRepository.findAll();
+	}
+	
+	@GetMapping("/clientes")
+	public List<Cliente> getAllClientes(){
+		return clienteRepository.findAll();
 	}
 	
 }

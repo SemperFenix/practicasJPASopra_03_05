@@ -34,6 +34,10 @@ public class Pedido implements Serializable{
 	@JoinColumn(name="DNI_CAMARERO")
 	private Camarero camarero;
 	
+	@ManyToOne
+	@JoinColumn(name="DNI_CLIENTE")
+	private Cliente cliente;
+	
 	@Enumerated(EnumType.STRING)
 	private EstadoPedido estado;
 	
@@ -68,6 +72,14 @@ public class Pedido implements Serializable{
 
 	public void setCamarero(Camarero camarero) {
 		this.camarero = camarero;
+	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public EstadoPedido getEstado() {
