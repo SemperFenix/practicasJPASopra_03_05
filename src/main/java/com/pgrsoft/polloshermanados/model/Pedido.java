@@ -85,6 +85,14 @@ public class Pedido implements Serializable {
 		this.cliente = cliente;
 	}
 
+	public Establecimiento getEstablecimiento() {
+		return establecimiento;
+	}
+
+	public void setEstablecimiento(Establecimiento establecimiento) {
+		this.establecimiento = establecimiento;
+	}
+
 	public EstadoPedido getEstado() {
 		return estado;
 	}
@@ -103,7 +111,10 @@ public class Pedido implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigo);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
 	}
 
 	@Override
@@ -115,13 +126,18 @@ public class Pedido implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Pedido other = (Pedido) obj;
-		return Objects.equals(codigo, other.codigo);
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Pedido [codigo=" + codigo + ", fecha=" + fecha + ", camarero=" + camarero + ", estado=" + estado
-				+ ", lineas=" + lineas + "]";
+		return "Pedido [codigo=" + codigo + ", fecha=" + fecha + ", camarero=" + camarero + ", cliente=" + cliente
+				+ ", establecimiento=" + establecimiento + ", estado=" + estado + ", lineas=" + lineas + "]";
 	}
 
 }
