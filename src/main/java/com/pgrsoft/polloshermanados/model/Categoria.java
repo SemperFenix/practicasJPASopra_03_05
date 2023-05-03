@@ -3,10 +3,18 @@ package com.pgrsoft.polloshermanados.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="CATEGORIAS")
 public class Categoria implements Serializable{
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	private Long codigo;
+	
 	private String nombre;
 	
 	public Categoria() {
@@ -28,7 +36,7 @@ public class Categoria implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(codigo);

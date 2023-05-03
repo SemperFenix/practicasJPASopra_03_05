@@ -3,14 +3,22 @@ package com.pgrsoft.polloshermanados.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="CAMAREROS")
 public class Camarero implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private String DNI;
+	
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
-	
+
 	public Camarero() {
 		
 	}
